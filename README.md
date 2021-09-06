@@ -22,9 +22,31 @@ the proposed approach.
 <img src="./extras/MVDarch.png" height="400">
 
 ## Dataset
-* Wildtrack Dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
-* MultiviewX Dataset can be downloaded from this [link](https://github.com/hou-yz/MultiviewX).
+* Wildtrack dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
+* MultiviewX dataset can be downloaded from this [link](https://github.com/hou-yz/MultiviewX).
 
+## Installation and Dependencies
+
+* Install all requirements required to run the code on a Python 3.x by:
+ ```	
+# First, activate a new virtual environment
+$ pip install -r requirements.txt
+ ```
+ For conda users
+ ```
+$ conda env create -f environment.yml
+ ```
+ 
+* Downloaded dataset place it inside folder `GMVD/`
+* Copy config.json file to Dataset folder 
+```
+# For Wildtrack
+[GMVD]$ cp configuration/wildtrack/config.json ~/GMVD/Wildtrack/
+
+# For MultiviewX
+[GMVD]$ cp configuration/multiviewx/config.json ~/GMVD/MultiviewX/
+```
+  
 ## Results
 ### Traditional Evaluation
 ![](./extras/traditional_eval.PNG)
