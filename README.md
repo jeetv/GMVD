@@ -32,12 +32,12 @@ the proposed approach.
 # First, activate a new virtual environment
 $ pip install -r requirements.txt
  ```
- For conda users
+* Using conda :
  ```
 $ conda env create -f environment.yml
  ```
  
-* Downloaded dataset place it inside folder `GMVD/`
+* Downloaded dataset and place it inside folder `GMVD/`
 * Copy config.json file to Dataset folder 
 ```
 # For Wildtrack
