@@ -1,6 +1,6 @@
 # Bringing Generalization to Deep Multi-view Detection
 ![](./extras/three_generalization.png {width=40px height=40px})
-<img src="./extras/three_generalization.png" width="40" height="40">
+<img src="./extras/three_generalization.png" width="400" height="400">
 ## Abstract
 Multi-view Detection (MVD) is highly effective for occlusion reasoning and is a
 mainstream solution in various applications that require accurate top-view occupancy
