@@ -26,3 +26,11 @@ the proposed approach.
 * MultiviewX Dataset can be downloaded from this [link](https://github.com/hou-yz/MultiviewX).
 
 ## Results
+* Traditional Evaluation
+![](./extras/traditional_eval.png)
+* Varying Number of Cameras
+![](./extras/vary_cam.png)
+* Changing Camera Configurations
+![](./extras/change_cam.png)
+* Scene Generalization
+![](./extras/sc_gen.png)
