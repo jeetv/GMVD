@@ -32,12 +32,12 @@ the proposed approach.
 # First, activate a new virtual environment
 $ pip install -r requirements.txt
  ```
-* Using conda :
+* Installation using conda :
  ```
 $ conda env create -f environment.yml
  ```
  
-* Downloaded dataset and place it inside folder `GMVD/`
+* Download dataset and place it inside folder `GMVD/`
 * Copy config.json file to Dataset folder 
 ```
 # For Wildtrack
@@ -46,6 +46,9 @@ $ conda env create -f environment.yml
 # For MultiviewX
 [GMVD]$ cp configuration/multiviewx/config.json ~/GMVD/MultiviewX/
 ```
+## Training
+
+## Inference
   
 ## Results
 ### Traditional Evaluation
