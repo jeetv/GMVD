@@ -27,10 +27,10 @@ the proposed approach.
 
 ## Results
 * Traditional Evaluation
-![](./extras/traditional_eval.png)
+![](./extras/traditional_eval.PNG)
 * Varying Number of Cameras
 ![](./extras/vary_cam.png)
 * Changing Camera Configurations
-![](./extras/change_cam.png)
+![](./extras/change_cam.PNG)
 * Scene Generalization
-![](./extras/sc_gen.png)
+![](./extras/sc_gen.PNG)
