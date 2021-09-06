@@ -1,0 +1,1 @@
+{"Dataset": "Wildtrack", "num_cam": 7, "num_frames": 2000, "img_shape": [1080, 1920], "grid_shape": [480, 1440], "grid_cell": 2.5, "origin": [-300,-900], "region_size":[12,36]}

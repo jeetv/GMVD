@@ -1,0 +1,1 @@
+{"Dataset": "MultiviewX", "num_cam": 6, "num_frames": 400, "img_shape": [1080, 1920], "grid_shape": [640, 1000], "grid_cell": 0.025, "origin": [0,0], "region_size":[16,25]}
