@@ -62,13 +62,13 @@ For training,
 
 * Inference for varying cameras
 ```
-## Syntax Example : python main.py --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 --resume <foldername>/<filename.pth>
+## Syntax Example : python main.py --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 4 --resume <foldername>/<filename.pth>
 
 # For Wildtrack
-[GMVD]$ python main.py --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 --resume trained_models/wildtrack/traditional_eval/Multiview_Detection_wildtrack.pth
+[GMVD]$ python main.py --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 4 --resume trained_models/wildtrack/traditional_eval/Multiview_Detection_wildtrack.pth
 
 # For MultiviewX
-[GMVD]$ python main.py -d multiviewx --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_multiviewx.pth
+[GMVD]$ python main.py -d multiviewx --avgpool --cam_set --train_cam 1 2 3 4 5 6 --test_cam 1 2 3 4 --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_multiviewx.pth
 ```
 
 * Inference for changing camera configurations
