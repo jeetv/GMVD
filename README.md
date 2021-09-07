@@ -47,9 +47,46 @@ $ conda env create -f environment.yml
 [GMVD]$ cp configuration/multiviewx/config.json ~/GMVD/MultiviewX/
 ```
 ## Training
+For training, 
+* ``train.sh`` contains commands to run training in normal setting.
+* ``train_dropview.sh`` contains commands to run training with dropview regularization.
 
 ## Inference
-  
+* Clone this repository and download the pretrained weights from this [link](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/jeet_vora_research_iiit_ac_in/EoZySkQaB2NAuBqbyGwwwX0BP4Ma33QIWdMvlJrczeQoHQ?e=2Z7xgT)
+* Arguments to specific
+```
+--avgpool : to use average pooling
+--dropview : enable dropview (note: --avgpool is also activated)
+-d <dataset_name> : specify dataset eg:- wildtrack/multiviewx
+```
+
+* Inference for varying cameras
+```
+## Syntax Example : python main.py --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 --resume <foldername>/<filename.pth>
+
+# For Wildtrack
+[GMVD]$ python main.py --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 --resume trained_models/wildtrack/traditional_eval/Multiview_Detection_wildtrack.pth
+
+# For MultiviewX
+[GMVD]$ python main.py -d multiviewx --avgpool --cam_set --train_cam 1 2 3 4 5 6 7 --test_cam 1 2 3 --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_multiviewx.pth
+```
+
+* Inference for changing camera configurations
+```
+## Syntax Example : python main.py --avgpool --cam_set --train_cam 2 4 5 6 --test_cam 1 3 5 7 --resume <foldername>/<filename.pth>
+
+# For Wildtrack
+[GMVD]$ python main.py --avgpool --cam_set --train_cam 2 4 5 6 --test_cam 1 3 5 7 --resume trained_models/wildtrack/changing_cam/Multiview_Detection_wildtrack_2456.pth
+
+# For MultiviewX
+[GMVD]$ python main.py -d multiviewx --avgpool --cam_set --train_cam 1 3 4 --test_cam 2 5 6 --resume trained_models/multiviewx/changing_cam/Multiview_Detection_multiviewx_134.pth
+```
+
+* Inference for scene generalization
+```
+[GMVD]$ python main.py -d wildtrack --avgpool --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_wildtrack.pth
+```
+
 ## Results
 ### Traditional Evaluation
 ![](./extras/traditional_eval.PNG)
