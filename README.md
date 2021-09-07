@@ -84,7 +84,7 @@ For training,
 
 * Inference for scene generalization
 ```
-[GMVD]$ python main.py -d wildtrack --avgpool --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_wildtrack.pth
+[GMVD]$ python main.py -d wildtrack --avgpool --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_multiviewx.pth
 ```
 
 ## Results
