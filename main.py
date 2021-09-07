@@ -218,6 +218,9 @@ if __name__ == '__main__':
         args.lr = 1e-3
         args.max_lr = 1e-2
         args.momentum = 0.9
+
+    if args.dropview:
+    	args.avgpool = True
         
     args.train_cam = list(map(int, args.train_cam))
     args.test_cam = list(map(int, args.test_cam))
@@ -350,7 +353,7 @@ if __name__ == '__main__':
             
 
     else :
-        resume_dir = f'logs/' + args.resume
+        resume_dir = args.resume
         resume_fname = resume_dir #+ '/Multiview_Detection_'+str(args.cross_dataset)+'.pth'
         model.load_state_dict({k.replace('world_classifier','map_classifier'):v for k,v in torch.load(resume_fname).items()})
         model.eval()

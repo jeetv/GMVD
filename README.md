@@ -48,8 +48,8 @@ $ conda env create -f environment.yml
 ```
 ## Training
 For training, 
-* ``train.sh`` contains commands to run training in normal setting.
-* ``train_dropview.sh`` contains commands to run training with dropview regularization.
+* ``training_commands/train.sh`` contains commands to run training in normal setting.
+* ``training_commands/train_dropview.sh`` contains commands to run training with dropview regularization.
 
 ## Inference
 * Clone this repository and download the pretrained weights from this [link](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/jeet_vora_research_iiit_ac_in/EoZySkQaB2NAuBqbyGwwwX0BP4Ma33QIWdMvlJrczeQoHQ?e=2Z7xgT)
