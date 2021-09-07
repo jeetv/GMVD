@@ -46,6 +46,14 @@ $ conda env create -f environment.yml
 # For MultiviewX
 [GMVD]$ cp configuration/multiviewx/config.json ~/GMVD/MultiviewX/
 ```
+
+## General Intructions
+* All the experiments are perfomed using 2 Nvidia 1080Ti GPU's
+* By default training batch_size is set as 2, can change using parameter `-b <batch_size_number>`
+```
+example : python main.py -b 1 --avgpool
+```
+
 ## Training
 For training, 
 * ``training_commands/train.sh`` contains commands to run training in normal setting.
