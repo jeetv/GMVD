@@ -26,7 +26,21 @@ from resnet import resnet18
 from sklearn.metrics import precision_score, recall_score, accuracy_score
     
 ###################################################################################################################################
+score = []
+prev, idx = 0, 0
 # Functions Train / Test
+def isbest(new, epoch):
+    global prev,idx
+    if new > prev:
+        prev = new
+        idx = epoch
+        return 1
+    return 0
+
+def get_score(score):
+    score = np.asarray(score)
+    return score[np.argmax(score,0)[0]]
+
 def sigmoid(x):
     return 1/(1 + np.exp(-x))
 
@@ -132,14 +146,14 @@ def test(model, epoch, data_loader, res_fpath=None, visualize=False):
         recall_s.update(recall)
         accuracy_s.update(accuracy)
 
-    if visualize and epoch!=0:
+    if visualize and epoch!=0 and epoch==idx:
         fig = plt.figure()
         subplt0 = fig.add_subplot(211, title="output")
         subplt1 = fig.add_subplot(212, title="target")
         subplt0.imshow(map_res.detach().cpu().numpy().squeeze())
         subplt1.imshow(criterion.target_transform_(map_res, map_gt, data_loader.dataset.map_kernel).detach().cpu().numpy().squeeze())
         plt.tight_layout()
-        plt.savefig(os.path.join(logdir, 'map_'+str(epoch)+'.jpg'))
+        plt.savefig(os.path.join(logdir, 'map_'+str(idx)+'.jpg'))
         plt.close(fig)
         
     if res_fpath is not None:
@@ -157,7 +171,8 @@ def test(model, epoch, data_loader, res_fpath=None, visualize=False):
         recall, precision, moda, modp = evaluate(os.path.abspath(res_fpath),
                                                     os.path.abspath(data_loader.dataset.base.gt_fname),
                                                     data_loader.dataset.base.__name__)
-        print(f'moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {precision:.1f}%, recall: {recall:.1f}%')
+        #print(f'####### moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {precision:.1f}%, recall: {recall:.1f}% #######')
+        score.append([moda, modp, precision, recall])
     else:
         moda = 0
         
@@ -177,7 +192,7 @@ if __name__ == '__main__':
     parser.add_argument('-pr', '--pretrained', default=True, action='store_true', help='Use pretrained weights (default: True)')
     parser.add_argument('-cd', '--cross_dataset', type=str, default='wildtrack', choices=['wildtrack', 'multiviewx'])
     parser.add_argument('-j', '--num_workers', type=int, default=4)
-    parser.add_argument('-b', '--batch_size', type=int, default=2, metavar='N', help='input batch size for training (default: 2)')
+    parser.add_argument('-b', '--batch_size', type=int, default=1, metavar='N', help='input batch size for training (default: 2)')
     parser.add_argument('--epochs', type=int, default=10, metavar='N', help='number of epochs to train (default: 10)')
     parser.add_argument('--lr', type=float, default=1e-3, metavar='LR', help='learning rate (default: 1e-3)')
     parser.add_argument('--max_lr', type=float, default=1e-2, metavar='max LR', help=' max learning rate (default: 1e-2)')
@@ -215,12 +230,16 @@ if __name__ == '__main__':
         
     if args.loss=='klcc':
         args.cls_thres = sigmoid(args.cls_thres)
-        args.lr = 1e-3
-        args.max_lr = 1e-2
+        args.lr = 5e-4 * args.batch_size
+        args.max_lr = 5e-3 * args.batch_size
         args.momentum = 0.9
 
+    if not args.avgpool and args.loss=='mse':
+        args.lr = 0.1
+        args.max_lr = 0.1
+
     if args.dropview:
-    	args.avgpool = True
+        args.avgpool = True
         
     args.train_cam = list(map(int, args.train_cam))
     args.test_cam = list(map(int, args.test_cam))
@@ -341,14 +360,19 @@ if __name__ == '__main__':
             loss_curve(os.path.join(logdir, 'learning_curve.jpg'), x_epoch, train_loss_s, test_loss_s, train_prec_s, test_prec_s, train_recall_s, test_recall_s,
                 train_acc_s, test_acc_s)
     
-            # Save Dictionary 
-            #torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'_'+str(epoch)+'.pth'))
+            # Save Dictionary
+            if isbest(score[epoch][0], epoch):
+                torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'.pth'))
             
             if args.earlystop!=0 and args.earlystop==epoch:
                 #torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'_'+str(epoch)+'.pth'))
                 break
             #else :
-        torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'_'+str(epoch)+'.pth'))
+        
+        moda, modp, prec, rec = score[idx]
+        print(f'####### idx: {idx} ,moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {prec:.1f}%, recall: {rec:.1f}% #######')
+        
+        #torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'_'+str(epoch)+'.pth'))
         print("Training Completed..")
             
 
@@ -360,3 +384,5 @@ if __name__ == '__main__':
         
     print('Test loaded model...')
     test(model, 1, test_loader, os.path.join(logdir, 'test_'+str(args.dataset)+'.txt'), visualize=True)
+    moda, modp, precision, recall = score[idx]
+    print(f'####### moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {precision:.1f}%, recall: {recall:.1f}% #######')
