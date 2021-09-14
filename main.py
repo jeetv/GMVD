@@ -1,4 +1,5 @@
 import os
+import glob
 import time
 import cv2
 import numpy as np
@@ -40,6 +41,19 @@ def isbest(new, epoch):
 def get_score(score):
     score = np.asarray(score)
     return score[np.argmax(score,0)[0]]
+
+def cleanup(logdir, idx):
+    outputmap = 'map_'+str(idx)+'.jpg'
+    outputfile = 'test_'+str(args.dataset)+'_'+str(idx)+'.txt'
+    retain = [outputmap, outputfile]
+    os.chdir(logdir)
+    for img in glob.glob('map_*.jpg'):
+        if img not in retain:
+            os.remove(img)
+    for outfile in glob.glob('test*.txt'):
+        if outfile not in retain:
+            os.remove(outfile)
+
 
 def sigmoid(x):
     return 1/(1 + np.exp(-x))
@@ -146,14 +160,14 @@ def test(model, epoch, data_loader, res_fpath=None, visualize=False):
         recall_s.update(recall)
         accuracy_s.update(accuracy)
 
-    if visualize and epoch!=0 and epoch==idx:
+    if visualize and epoch!=0:
         fig = plt.figure()
         subplt0 = fig.add_subplot(211, title="output")
         subplt1 = fig.add_subplot(212, title="target")
         subplt0.imshow(map_res.detach().cpu().numpy().squeeze())
         subplt1.imshow(criterion.target_transform_(map_res, map_gt, data_loader.dataset.map_kernel).detach().cpu().numpy().squeeze())
         plt.tight_layout()
-        plt.savefig(os.path.join(logdir, 'map_'+str(idx)+'.jpg'))
+        plt.savefig(os.path.join(logdir, 'map_'+str(epoch)+'.jpg'))
         plt.close(fig)
         
     if res_fpath is not None:
@@ -180,7 +194,7 @@ def test(model, epoch, data_loader, res_fpath=None, visualize=False):
     print('Test, Loss: {:.9f}, Precision: {:.1f}%, Recall: {:.1f}, accuracy: {:.1f}%, \tTime: {:.3f}(min)'.format(
             losses / (len(data_loader) + 1), precision_s.avg * 100, recall_s.avg * 100, accuracy_s.avg * 100, (time.time()-tic)/60))
     
-    return losses / len(data_loader), precision_s.avg * 100, recall_s.avg * 100, accuracy_s.avg * 100
+    return losses / len(data_loader), precision_s.avg * 100, recall_s.avg * 100, accuracy_s.avg * 100, moda
 
 
 ###################################################################################################################################
@@ -230,9 +244,10 @@ if __name__ == '__main__':
         
     if args.loss=='klcc':
         args.cls_thres = sigmoid(args.cls_thres)
-        args.lr = 5e-4 * args.batch_size
-        args.max_lr = 5e-3 * args.batch_size
         args.momentum = 0.9
+        if args.batch_size != 0 and args.batch_size <= 2:
+            args.lr = 5e-4 * args.batch_size
+            args.max_lr = 5e-3 * args.batch_size
 
     if not args.avgpool and args.loss=='mse':
         args.lr = 0.1
@@ -336,13 +351,12 @@ if __name__ == '__main__':
     if args.resume is None:
         print('Testing....')
         test(model, 0, test_loader, res_fpath= os.path.join(logdir, 'test_'+str(args.dataset)+'_'+str(0)+'.txt'), visualize=True)
-        
         for epoch in tqdm.tqdm(range(1, args.epochs+1)):
             print('Training...')
             train_loss, train_prec, train_recall, train_acc = train(model, epoch, train_loader, optimizer, args.log_interval, scheduler)
             
             print('Testing...')
-            test_loss, test_prec, test_recall, test_acc = test(model, epoch, test_loader, os.path.join(logdir, 'test_'+str(args.dataset)+'_'+str(epoch)+'.txt'), visualize=True)
+            test_loss, test_prec, test_recall, test_acc, MODA = test(model, epoch, test_loader, os.path.join(logdir, 'test_'+str(args.dataset)+'_'+str(epoch)+'.txt'), visualize=True)
             
             x_epoch.append(epoch)
             train_loss_s.append(train_loss)
@@ -368,9 +382,11 @@ if __name__ == '__main__':
                 #torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'_'+str(epoch)+'.pth'))
                 break
             #else :
+            if MODA < 10.0 and epoch>6:
+                break
         
         moda, modp, prec, rec = score[idx]
-        print(f'####### idx: {idx} ,moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {prec:.1f}%, recall: {rec:.1f}% #######')
+        print(f'####### epoch: {idx} ,moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {prec:.1f}%, recall: {rec:.1f}% #######')
         
         #torch.save(model.state_dict(), os.path.join(logdir, 'Multiview_Detection_'+str(args.dataset)+'_'+str(epoch)+'.pth'))
         print("Training Completed..")
@@ -386,3 +402,4 @@ if __name__ == '__main__':
     test(model, 1, test_loader, os.path.join(logdir, 'test_'+str(args.dataset)+'.txt'), visualize=True)
     moda, modp, precision, recall = score[idx]
     print(f'####### moda: {moda:.1f}%, modp: {modp:.1f}%, prec: {precision:.1f}%, recall: {recall:.1f}% #######')
+    cleanup(logdir, idx)
