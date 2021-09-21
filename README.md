@@ -49,9 +49,6 @@ $ conda env create -f environment.yml
 
 ## General Intructions
 * All the experiments are perfomed using 2 Nvidia 1080Ti GPU's
-```
-example : python main.py -b 1 --avgpool
-```
 
 ## Training
 For training, 
