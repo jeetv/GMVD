@@ -100,3 +100,25 @@ For training,
 ![](./extras/change_cam.PNG)
 ### Scene Generalization
 ![](./extras/sc_gen.PNG)
+
+## Citations
+```
+@misc{vora2021bringing,
+      title={Bringing Generalization to Deep Multi-view Detection}, 
+      author={Jeet Vora and Swetanjal Dutta and Shyamgopal Karthik and Vineet Gandhi},
+      year={2021},
+      eprint={2109.12227},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+If you use the above code also cite this:
+```
+@inproceedings{hou2020multiview,
+  title={Multiview Detection with Feature Perspective Transformation},
+  author={Hou, Yunzhong and Zheng, Liang and Gould, Stephen},
+  booktitle={ECCV},
+  year={2020}
+}
+
+```
