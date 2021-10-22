@@ -6,6 +6,7 @@ import torch.nn.functional as F
 import kornia
 #from MCMT.resnet import resnet18
 import matplotlib.pyplot as plt
+import random as rnd
 
 class MultiView_Detection(nn.Module):
     def __init__(self, backbone_model, dataset, logdir, loss, avgpool, cam_set, len_cam_set):
@@ -64,6 +65,7 @@ class MultiView_Detection(nn.Module):
         
     def forward(self, imgs, ignore_cam, duplicate_cam, random, cam_selected):
         B, N, C, H, W = imgs.shape
+        ignore_cam = rnd.choice(cam_selected)#Pick a new ignore camera for each sample
         assert N == self.num_cam
         device = imgs.device
         world_features = []
