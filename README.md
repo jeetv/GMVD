@@ -2,27 +2,14 @@
 <img src="./extras/three_generalization.png" height="400">
 
 ## Abstract
-Multi-view Detection (MVD) is highly effective for occlusion reasoning and is a
-mainstream solution in various applications that require accurate top-view occupancy
-maps. While recent works using deep learning have made significant advances in the
-field, they have overlooked the generalization aspect, which makes them impractical
-for real-world deployment. The key novelty of our work is to formalize three critical
-forms of generalization and propose experiments to investigate them: i) generalization
-across a varying number of cameras, ii) generalization with varying camera positions,
-and finally, iii) generalization to new scenes. We find that existing state-of-the-art models
-show poor generalization by overfitting to a single scene and camera configuration. We
-propose modifications in terms of pre-training, pooling strategy, regularization, and loss
-function to an existing state-of-the-art framework, leading to successful generalization
-across new camera configurations and new scenes. We perform a comprehensive set of
-experiments on the WildTrack and MultiViewX datasets to (a) motivate the necessity to
-evaluate MVD methods on generalization abilities and (b) demonstrate the efficacy of
-the proposed approach.
+Multi-view Detection (MVD) is highly effective for oc-clusion reasoning in a crowded environment. While recentworks using deep learning have made significant advancesin the field, they have overlooked the generalization aspect,which makes themimpractical for real-world deployment.The key novelty of our work is toformalizethree criticalforms of generalization andpropose experiments to evaluatethem: generalization with i) a varying number of cameras, ii)varying camera positions, and finally, iii) to new scenes. Wefind that existing state-of-the-art models show poor general-ization by overfitting to a single scene and camera configu-ration. To address the concerns: (a) we propose a novel Gen-eralized MVD (GMVD) dataset, assimilating diverse sceneswith changing daytime, camera configurations, varying num-ber of cameras, and (b) we discuss the properties essentialto bring generalization to MVD and propose a barebonesmodel to incorporate them. We perform a comprehensive setof experiments on the WildTrack, MultiViewX and the GMVDdatasets to motivate the necessity to evaluate generalizationabilities of MVD methods and to demonstrate the efficacy ofthe proposed approach.
 
 ## Architecture
 <img src="./extras/gmvd_arch.png" height="400">
 
 ## GMVD Dataset
 <img src="./extras/gmvd_dataset.png" height="300" width="1000">
+* Dataset links and instructions are provided here [link](https://github.com/jeetv/GMVD_dataset)
 
 ## Publicly Available Dataset
 * Wildtrack dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
