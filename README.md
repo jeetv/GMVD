@@ -19,9 +19,12 @@ evaluate MVD methods on generalization abilities and (b) demonstrate the efficac
 the proposed approach.
 
 ## Architecture
-<img src="./extras/MVDarch.png" height="400">
+<img src="./extras/gmvd_arch_v2.pdf" height="400">
 
-## Dataset
+## GMVD Dataset
+<img src="./extras/MVD_dataset_v3.pdf" height="400">
+
+## Publicly Available Dataset
 * Wildtrack dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
 * MultiviewX dataset can be downloaded from this [link](https://github.com/hou-yz/MultiviewX).
 
@@ -90,16 +93,6 @@ For training,
 ```
 [GMVD]$ python main.py -d wildtrack --avgpool --resume trained_models/multiviewx/traditional_eval/Multiview_Detection_multiviewx.pth
 ```
-
-## Results
-### Traditional Evaluation
-![](./extras/traditional_eval.PNG)
-### Varying Number of Cameras
-![](./extras/vary_cam.png)
-### Changing Camera Configurations
-![](./extras/change_cam.PNG)
-### Scene Generalization
-![](./extras/sc_gen.PNG)
 
 ## Citations
 ```
