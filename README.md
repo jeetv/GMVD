@@ -19,7 +19,7 @@ evaluate MVD methods on generalization abilities and (b) demonstrate the efficac
 the proposed approach.
 
 ## Architecture
-<img src="./extras/gmvd_arch.png" height="400" width="600">
+<img src="./extras/gmvd_arch.png" height="400">
 
 ## GMVD Dataset
 <img src="./extras/gmvd_dataset.png" height="400">
