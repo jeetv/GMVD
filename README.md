@@ -19,10 +19,10 @@ evaluate MVD methods on generalization abilities and (b) demonstrate the efficac
 the proposed approach.
 
 ## Architecture
-<embed src="./extras/gmvd_arch_v2.pdf" height="400">
+<img src="./extras/gmvd_arch.png" height="400">
 
 ## GMVD Dataset
-<embed src="./extras/MVD_dataset_v3.pdf" height="400">
+<img src="./extras/gmvd_dataset.png" height="400">
 
 ## Publicly Available Dataset
 * Wildtrack dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
