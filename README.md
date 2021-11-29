@@ -19,10 +19,10 @@ evaluate MVD methods on generalization abilities and (b) demonstrate the efficac
 the proposed approach.
 
 ## Architecture
-<img src="./extras/gmvd_arch_v2.pdf" height="400">
+<embed src="./extras/gmvd_arch_v2.pdf" height="400">
 
 ## GMVD Dataset
-<img src="./extras/MVD_dataset_v3.pdf" height="400">
+<embed src="./extras/MVD_dataset_v3.pdf" height="400">
 
 ## Publicly Available Dataset
 * Wildtrack dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
@@ -51,7 +51,7 @@ $ conda env create -f environment.yml
 ```
 
 ## General Intructions
-* All the experiments are perfomed using 2 Nvidia 1080Ti GPU's
+* All the experiments are perfomed using 1 Nvidia 1080Ti GPU's
 
 ## Training
 For training, 
