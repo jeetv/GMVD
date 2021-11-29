@@ -9,7 +9,8 @@ Multi-view Detection (MVD) is highly effective for oc-clusion reasoning in a cro
 
 ## GMVD Dataset
 <img src="./extras/gmvd_dataset.png" height="300" width="1000">
-* Dataset links and instructions are provided here [link](https://github.com/jeetv/GMVD_dataset)
+
+* Dataset links and instructions are provided here [link](https://github.com/jeetv/GMVD_dataset).
 
 ## Publicly Available Dataset
 * Wildtrack dataset can be downloaded from this [link](https://www.epfl.ch/labs/cvlab/data/data-wildtrack/).
