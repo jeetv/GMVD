@@ -1,8 +1,8 @@
-# Bringing Generalization to Deep Multi-view Detection
+# Bringing Generalization to Deep Multi-view Detection [[arXiv](https://arxiv.org/abs/2109.12227)]
 <img src="./extras/three_generalization.png" height="400">
 
 ## Abstract
-Multi-view Detection (MVD) is highly effective for occlusion reasoning in a crowded environment. While recent works using deep learning have made significant advances in the field, they have overlooked the generalization aspect,which makes them impractical for real-world deployment.The key novelty of our work is to formalize three critical forms of generalization and propose experiments to evaluate them: generalization with i) a varying number of cameras, ii)varying camera positions, and finally, iii) to new scenes. We find that existing state-of-the-art models show poor generalization by overfitting to a single scene and camera configuration. To address the concerns: (a) we propose a novel Generalized MVD (GMVD) dataset, assimilating diverse scenes with changing daytime, camera configurations, varying number of cameras, and (b) we discuss the properties essential to bring generalization to MVD and propose a barebones model to incorporate them. We perform a comprehensive set of experiments on the WildTrack, MultiViewX and the GMVD datasets to motivate the necessity to evaluate generalization abilities of MVD methods and to demonstrate the efficacy ofthe proposed approach.
+Multi-view Detection (MVD) is highly effective for occlusion reasoning in a crowded environment. While recent works using deep learning have made significant advances in the field, they have overlooked the generalization aspect,which makes them impractical for real-world deployment.The key novelty of our work is to formalize three critical forms of generalization and propose experiments to evaluate them: generalization with i) a varying number of cameras, ii) varying camera positions, and finally, iii) to new scenes. We find that existing state-of-the-art models show poor generalization by overfitting to a single scene and camera configuration. To address the concerns: (a) we propose a novel Generalized MVD (GMVD) dataset, assimilating diverse scenes with changing daytime, camera configurations, varying number of cameras, and (b) we discuss the properties essential to bring generalization to MVD and propose a barebones model to incorporate them. We perform a comprehensive set of experiments on the WildTrack, MultiViewX and the GMVD datasets to motivate the necessity to evaluate generalization abilities of MVD methods and to demonstrate the efficacy ofthe proposed approach.
 
 ## Architecture
 <img src="./extras/gmvd_arch.png" height="400">
@@ -39,7 +39,7 @@ $ conda env create -f environment.yml
 ```
 
 ## General Intructions
-* All the experiments are perfomed using 1 Nvidia 1080Ti GPU's
+* All the experiments are perfomed using 1 Nvidia 1080Ti GPU
 
 ## Training
 For training, 
