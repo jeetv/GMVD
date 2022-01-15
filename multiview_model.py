@@ -73,8 +73,7 @@ class MultiView_Detection(nn.Module):
             ignore_cam = rnd.choice(cam_selected)
             #Pick duplicate cam for concat operation
             duplicate_cam = random.choice([i for i in cam_selected if ignore_cam!=i])
-            
-        ignore_cam = rnd.choice(cam_selected)#Pick a new ignore camera for each sample
+           
         assert N == self.num_cam
         device = imgs.device
         world_features = []
