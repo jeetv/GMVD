@@ -76,7 +76,7 @@ def train(model, epoch, data_loader, optimizer, log_interval, scheduler=None):
             ignore_cam = random.randint(0, data_loader.dataset.num_cam-1)
             duplicate_cam = random.choice([i for i in range(data_loader.dataset.num_cam) if ignore_cam!=i])
         #print('Ignore cam : ', ignore_cam)
-        if not args.avgpool:
+        #if not args.avgpool:
             #print('Duplicate cam : ', duplicate_cam)
     for batch_idx, (data, map_gt, _) in enumerate(data_loader):
         data = data.to(device)
