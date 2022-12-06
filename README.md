@@ -1,4 +1,4 @@
-# Bringing Generalization to Deep Multi-view Detection [[arXiv](https://arxiv.org/abs/2109.12227)]
+# Bringing Generalization to Deep Multi-view Pedestrian Detection [[arXiv](https://arxiv.org/abs/2109.12227)]
 <img src="./extras/three_generalization.png" height="400">
 
 ## Abstract
