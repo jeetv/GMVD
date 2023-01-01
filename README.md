@@ -85,14 +85,15 @@ For training,
 
 ## Citations
 ```
-@misc{vora2021bringing,
-      title={Bringing Generalization to Deep Multi-view Detection}, 
-      author={Jeet Vora and Swetanjal Dutta and Shyamgopal Karthik and Vineet Gandhi},
-      year={2021},
-      eprint={2109.12227},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{Vora_2023_WACV,
+    author    = {Vora, Jeet and Dutta, Swetanjal and Jain, Kanishk and Karthik, Shyamgopal and Gandhi, Vineet},
+    title     = {Bringing Generalization to Deep Multi-View Pedestrian Detection},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) Workshops},
+    month     = {January},
+    year      = {2023},
+    pages     = {110-119}
 }
+
 ```
 If you use the above code also cite this:
 ```
