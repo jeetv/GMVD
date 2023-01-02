@@ -1,4 +1,4 @@
-# Bringing Generalization to Deep Multi-view Pedestrian Detection [[arXiv](https://arxiv.org/abs/2109.12227)]
+# Bringing Generalization to Deep Multi-view Pedestrian Detection [[WACV](https://openaccess.thecvf.com/content/WACV2023W/RWS/html/Vora_Bringing_Generalization_to_Deep_Multi-View_Pedestrian_Detection_WACVW_2023_paper.html)][[arXiv](https://arxiv.org/abs/2109.12227)]
 <img src="./extras/three_generalization.png" height="400">
 
 ## Abstract
