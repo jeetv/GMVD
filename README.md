@@ -48,7 +48,7 @@ For training,
 * ``training_commands/train_dropview.sh`` contains commands to run training with dropview regularization.
 
 ## Inference
-* Clone this repository and download the pretrained weights from this [link](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/jeet_vora_research_iiit_ac_in/EoZySkQaB2NAuBqbyGwwwX0BP4Ma33QIWdMvlJrczeQoHQ?e=2Z7xgT)
+* Clone this repository and download the pretrained weights from this [link](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/jeet_vora_alumni_iiit_ac_in/Eq04lE4MBA1OlxuzqY0nOQoBJ3whik4RIGhwL9lW3b-TQA?e=IDwyZJ)
 * Arguments to specific
 ```
 --avgpool : to use average pooling
